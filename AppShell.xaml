@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="PM2E1280114.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:PM2E1280114.Pages">
+
+    <ShellContent Title="Inicio"
+                  ContentTemplate="{DataTemplate pages:PantallaInicial}" />
+    <ShellContent Title="Mis Sitios"
+                  ContentTemplate="{DataTemplate pages:ListaSitios}" />
+
+</Shell>

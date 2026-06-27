@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2E1280114.Pages.PantallaInicial">
+
+	<Shell.TitleView>
+		<Label Text="Registrar Sitio"
+               TextColor="White"
+               FontAttributes="Bold"
+               FontSize="18"
+               VerticalOptions="Center" />
+	</Shell.TitleView>
+
+	<ScrollView BackgroundColor="#F0F4F8">
+		<VerticalStackLayout Padding="24" Spacing="16">
+
+			<Label Text="Nuevo Sitio"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="#1B3A4B"
+                   HorizontalOptions="Center" />
+
+			
+			<Border Stroke="#2E6DA4"
+                    StrokeThickness="2"
+                    HeightRequest="200">
+				<Border.StrokeShape>
+					<RoundRectangle CornerRadius="12" />
+				</Border.StrokeShape>
+				<Image x:Name="imgSitio"
+                       Aspect="AspectFill" />
+			</Border>
+
+			<Button Text="Tomar Foto"
+                    BackgroundColor="#2E6DA4"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnTomarFoto" />
+
+			<Entry x:Name="entDescripcion"
+                   Placeholder="Descripcion del sitio"
+                   PlaceholderColor="#999"
+                   BackgroundColor="White"
+                   TextColor="#1B3A4B" />
+
+			<HorizontalStackLayout Spacing="12">
+				<Entry x:Name="entLatitud"
+                       Placeholder="Latitud"
+                       IsReadOnly="True"
+                       BackgroundColor="#E8F4F8"
+                       TextColor="#1B3A4B"
+                       HorizontalOptions="FillAndExpand" />
+				<Entry x:Name="entLongitud"
+                       Placeholder="Longitud"
+                       IsReadOnly="True"
+                       BackgroundColor="#E8F4F8"
+                       TextColor="#1B3A4B"
+                       HorizontalOptions="FillAndExpand" />
+			</HorizontalStackLayout>
+
+			<Button Text="Obtener Ubicacion GPS"
+                    BackgroundColor="#4CAF7D"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnObtenerUbicacion" />
+
+			<Button Text="Guardar Sitio"
+                    BackgroundColor="#1B3A4B"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnGuardar" />
+
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
