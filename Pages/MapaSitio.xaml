@@ -1,34 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              x:Class="PM2E1280114.Pages.MapaSitio"
-             Title="Ubicacion del Sitio"
-             BackgroundColor="#F0F4F8">
+             Title="Ubicacion del Sitio">
 
-    <Grid RowDefinitions="Auto,*,Auto" Padding="12" RowSpacing="10">
+	<Grid RowDefinitions="Auto,Auto,*,Auto"
+          Padding="24" RowSpacing="16"
+          BackgroundColor="#F9D0CD">
 
-        <!-- Descripcion del sitio -->
-        <Label Grid.Row="0"
+		<Label Grid.Row="0"
                x:Name="lblDescripcion"
-               FontSize="18"
+               FontSize="20"
                FontAttributes="Bold"
-               TextColor="#1B3A4B"
+               TextColor="#F13E93"
                HorizontalOptions="Center" />
 
-        <!-- Mapa -->
-        <maps:Map Grid.Row="1"
-                  x:Name="miMapa"
-                  IsShowingUser="True"
-                  MapType="Street" />
+		<Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="12">
+			<Border BackgroundColor="White" Stroke="#F13E93" StrokeThickness="1"
+                    Padding="12" Grid.Column="0">
+				<Border.StrokeShape>
+					<RoundRectangle CornerRadius="8" />
+				</Border.StrokeShape>
+				<VerticalStackLayout>
+					<Label Text="Latitud" TextColor="#F891BB" FontSize="12" />
+					<Label x:Name="lblLatitud" TextColor="#F13E93"
+                           FontAttributes="Bold" FontSize="14" />
+				</VerticalStackLayout>
+			</Border>
 
-        <!-- Boton compartir imagen -->
-        <Button Grid.Row="2"
-                Text="Compartir Imagen"
-                BackgroundColor="#4CAF7D"
-                TextColor="White"
-                CornerRadius="10"
-                Clicked="OnCompartir" />
+			<Border BackgroundColor="White" Stroke="#F13E93" StrokeThickness="1"
+                    Padding="12" Grid.Column="1">
+				<Border.StrokeShape>
+					<RoundRectangle CornerRadius="8" />
+				</Border.StrokeShape>
+				<VerticalStackLayout>
+					<Label Text="Longitud" TextColor="#F891BB" FontSize="12" />
+					<Label x:Name="lblLongitud" TextColor="#F13E93"
+                           FontAttributes="Bold" FontSize="14" />
+				</VerticalStackLayout>
+			</Border>
+		</Grid>
 
-    </Grid>
+		<Image Grid.Row="2"
+               x:Name="imgMapa"
+               Aspect="AspectFit" />
+
+		<Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="12">
+			<Button Grid.Column="0"
+                    Text="Ver en Mapa"
+                    BackgroundColor="#F13E93"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnVerMapa" />
+			<Button Grid.Column="1"
+                    Text="Compartir Imagen"
+                    BackgroundColor="#F891BB"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnCompartir" />
+		</Grid>
+		
+	</Grid>
 </ContentPage>

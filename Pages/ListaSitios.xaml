@@ -1,70 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:PM2E1280114.Models"
              x:Class="PM2E1280114.Pages.ListaSitios">
 
-	<Shell.TitleView>
-		<Label Text="Mis Sitios"
+    <Shell.TitleView>
+        <Label Text="Mis Sitios"
                TextColor="White"
                FontAttributes="Bold"
                FontSize="18"
                VerticalOptions="Center" />
-	</Shell.TitleView>
+    </Shell.TitleView>
 
-	<CollectionView x:Name="listaSitios"
+    <CollectionView x:Name="listaSitios"
                     Margin="12"
-                    BackgroundColor="#F0F4F8">
-		<CollectionView.ItemTemplate>
-			<DataTemplate>
+                    BackgroundColor="#FFFFFF">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:Sitio">
 
-				
-				<Border Margin="0,6"
+                <Border Margin="0,6"
                         Padding="12"
-                        Stroke="#2E6DA4"
+                        Stroke="#F9D0CD"
                         StrokeThickness="1.5"
-                        BackgroundColor="White">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="10" />
-					</Border.StrokeShape>
+                        BackgroundColor="#FFF5F7">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
 
-					<Border.GestureRecognizers>
-						<TapGestureRecognizer
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer
                             NumberOfTapsRequired="2"
                             Tapped="OnDobleClick" />
-					</Border.GestureRecognizers>
+                    </Border.GestureRecognizers>
 
-					<Grid ColumnDefinitions="80,*,Auto" ColumnSpacing="12">
+                    <Grid ColumnDefinitions="80,*,Auto" ColumnSpacing="12">
 
-						<Image Grid.Column="0"
+                        <Image Grid.Column="0"
                                Source="{Binding RutaImagen}"
                                Aspect="AspectFill"
                                HeightRequest="70"
                                WidthRequest="70" />
 
-						<VerticalStackLayout Grid.Column="1" Spacing="4">
-							<Label Text="{Binding Descripcion}"
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="{Binding Descripcion}"
                                    FontAttributes="Bold"
-                                   TextColor="#1B3A4B"
+                                   TextColor="#F13E93"
                                    FontSize="15" />
-							<Label Text="{Binding Latitud, StringFormat='Lat: {0:F5}'}"
-                                   TextColor="#555555" FontSize="12" />
-							<Label Text="{Binding Longitud, StringFormat='Lon: {0:F5}'}"
-                                   TextColor="#555555" FontSize="12" />
-						</VerticalStackLayout>
+                            <Label Text="{Binding Latitud, StringFormat='Lat: {0:F5}'}"
+                                   TextColor="#F891BB" FontSize="12" />
+                            <Label Text="{Binding Longitud, StringFormat='Lon: {0:F5}'}"
+                                   TextColor="#F891BB" FontSize="12" />
+                        </VerticalStackLayout>
 
-						<Button Grid.Column="2"
+                        <Button Grid.Column="2"
                                 Text="X"
-                                BackgroundColor="#E53935"
+                                BackgroundColor="#F891BB"
                                 TextColor="White"
                                 CornerRadius="8"
                                 WidthRequest="40"
                                 HeightRequest="40"
                                 Clicked="OnEliminar"
                                 CommandParameter="{Binding .}" />
-					</Grid>
-				</Border>
+                    </Grid>
+                </Border>
 
-			</DataTemplate>
-		</CollectionView.ItemTemplate>
-	</CollectionView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

@@ -9,18 +9,17 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
-            .UseMauiApp<App>()
-            .UseMauiMaps();
+            .UseMauiApp<App>();
+        // .UseMauiMaps();   
 
         builder.Services.AddSingleton<BaseDatos>();
-        builder.Services.AddTransient<Pages.PantallaInicial>();
-        builder.Services.AddTransient<Pages.ListaSitios>();
+        builder.Services.AddSingleton<Pages.PantallaInicial>();
+        builder.Services.AddSingleton<Pages.ListaSitios>();
         builder.Services.AddTransient<Pages.MapaSitio>();
 
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-
         return builder.Build();
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.Maps;
-using Microsoft.Maui.Maps;
+﻿
 
 namespace PM2E1280114.Pages;
 
@@ -22,36 +21,31 @@ public partial class MapaSitio : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        CargarMapa();
+
+        lblDescripcion.Text = Uri.UnescapeDataString(Desc);
+        lblLatitud.Text = Lat;
+        lblLongitud.Text = Lon;
+
+        string rutaImg = Uri.UnescapeDataString(Img);
+        if (File.Exists(rutaImg))
+            imgMapa.Source = ImageSource.FromFile(rutaImg);
     }
 
-    private void CargarMapa()
+    private async void OnVerMapa(object sender, EventArgs e)
     {
         try
         {
-            double latitud = double.Parse(Lat);
-            double longitud = double.Parse(Lon);
+            double lat = double.Parse(Lat);
+            double lon = double.Parse(Lon);
+            string desc = Uri.UnescapeDataString(Desc);
 
-            lblDescripcion.Text = Uri.UnescapeDataString(Desc);
-
-            var coordenada = new Location(latitud, longitud);
-
-            var pin = new Pin
-            {
-                Label = Uri.UnescapeDataString(Desc),
-                Location = coordenada,
-                Type = PinType.Place
-            };
-
-            miMapa.Pins.Clear();
-            miMapa.Pins.Add(pin);
-
-            miMapa.MoveToRegion(
-                MapSpan.FromCenterAndRadius(coordenada, Distance.FromKilometers(1)));
+            var location = new Location(lat, lon);
+            var options = new MapLaunchOptions { Name = desc };
+            await Map.Default.OpenAsync(location, options);
         }
-        catch
+        catch (Exception ex)
         {
-            DisplayAlert("Error", "No se pudo cargar la ubicacion.", "Aceptar");
+            await DisplayAlert("Error", ex.Message, "Aceptar");
         }
     }
 
